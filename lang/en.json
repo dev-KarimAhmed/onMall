@@ -1,0 +1,7 @@
+{
+    "on_mall": "OnMall",
+    "login": "Login",
+    "register": "Register",
+    "password": "Password",
+    "confirm_password": "Confirm Password"
+}

@@ -46,6 +46,10 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
   persistent_bottom_nav_bar: ^6.2.1
+  flutter_bloc: ^9.0.0
+  freezed: ^2.5.7
+  connectivity_plus: ^6.1.2
+  build_runner: ^2.4.13
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
