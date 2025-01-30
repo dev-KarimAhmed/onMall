@@ -4,9 +4,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:on_mall/core/services/shared_prefs/pref_keys.dart';
 import 'package:on_mall/core/services/shared_prefs/shared_pref_service.dart';
 
-
 part 'app_state.dart';
 part 'app_cubit.freezed.dart';
+
 class AppCubit extends Cubit<AppState> {
   AppCubit() : super(const AppState.initial());
 

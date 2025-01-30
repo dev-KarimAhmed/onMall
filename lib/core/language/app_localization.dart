@@ -38,4 +38,5 @@ class AppLocalizations {
 
   // Getter method to check if the current locale is English.
   bool get isEnLocale => locale.languageCode == 'en';
+  
 }

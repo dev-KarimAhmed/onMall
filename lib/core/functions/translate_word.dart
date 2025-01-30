@@ -6,3 +6,6 @@ String translateWord(BuildContext context, String langKey) {
     return AppLocalizations.of(context)!.translate(langKey).toString();
   }
   
+  bool isEnglish(BuildContext context) {
+  return AppLocalizations.of(context)!.isEnLocale;
+}

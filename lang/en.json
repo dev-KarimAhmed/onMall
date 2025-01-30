@@ -3,5 +3,12 @@
     "login": "Login",
     "register": "Register",
     "password": "Password",
-    "confirm_password": "Confirm Password"
+    "confirm_password": "Confirm Password",
+    "headline1": "Discover a diverse collection of stores in one app",
+    "subtitle1": "You can use one app to view all stores and browse them easily and quickly",
+    "headline2" : "Find your favorite products and make direct purchases",
+    "subtitle2" : "Discover products, check out stores, and visit them to buy what you want",
+    "skip" : "Skip",
+    "english" : "English",
+    "arabic" : "Arabic"
 }
