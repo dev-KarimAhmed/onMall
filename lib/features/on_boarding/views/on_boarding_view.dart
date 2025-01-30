@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:on_mall/core/common/animation/animate_do.dart';
 import 'package:on_mall/core/common/widgets/custom_linear_button.dart';
 import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
-import 'package:on_mall/core/language/app_localization.dart';
 import 'package:on_mall/core/language/lang_keys.dart';
-import 'package:on_mall/core/services/shared_prefs/pref_keys.dart';
-import 'package:on_mall/core/services/shared_prefs/shared_pref_service.dart';
 import 'package:on_mall/core/styles/helpers/font_weight_helper.dart';
 import 'package:on_mall/core/styles/images/app_assets.dart';
+import 'package:on_mall/features/on_boarding/views/widgets/custom_lang_dropmenu.dart';
 import 'package:on_mall/features/on_boarding/views/widgets/on_boarding_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -51,16 +50,25 @@ class _OnboardingViewState extends State<OnboardingView> {
             ),
             Positioned(
               top: 10,
+              left: !isEnglish(context) ? null : 10,
+              right: !isEnglish(context) ? 10 : null,
+              child: const CustomLanguageDropmenu(),
+            ),
+            Positioned(
+              top: 10,
               left: !isEnglish(context) ? 10 : null,
               right: !isEnglish(context) ? null : 10,
-              child: CustomLinearButton(
-                width: 88,
-                onPressed: () {},
-                child: Text(
-                  translateWord(context, Langkeys.skip),
-                  style: getBodyMediumTextStyle(context).copyWith(
-                    color: getColors(context).mainColor,
-                    fontWeight: FontWeightHelper.bold,
+              child: CustomFadeInLeft(
+                duration: 300,
+                child: CustomLinearButton(
+                  width: 88,
+                  onPressed: () {},
+                  child: Text(
+                    translateWord(context, Langkeys.skip),
+                    style: getBodyMediumTextStyle(context).copyWith(
+                      color: getColors(context).mainColor,
+                      fontWeight: FontWeightHelper.bold,
+                    ),
                   ),
                 ),
               ),

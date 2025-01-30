@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:on_mall/core/common/animation/animate_do.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -14,29 +15,32 @@ class OnboardingPage extends StatelessWidget {
   final String subtitle;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Image(
-            width: MediaQuery.sizeOf(context).width * 0.8,
-            height: MediaQuery.sizeOf(context).height * 0.6,
-            image: AssetImage(imagePath),
-          ),
-          Text(
-            textAlign: TextAlign.center,
-            title,
-            style: getBodyMediumTextStyle(context).copyWith(
-              fontWeight: FontWeight.bold,
+    return CustomFadeInUp(
+      duration: 300,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Image(
+              width: MediaQuery.sizeOf(context).width * 0.8,
+              height: MediaQuery.sizeOf(context).height * 0.6,
+              image: AssetImage(imagePath),
             ),
-          ),
-          SizedBox(height: 10.h),
-          Text(
-            textAlign: TextAlign.center,
-            subtitle,
-            style: getLargeTextStyle(context),
-          ),
-        ],
+            Text(
+              textAlign: TextAlign.center,
+              title,
+              style: getBodyMediumTextStyle(context).copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10.h),
+            Text(
+              textAlign: TextAlign.center,
+              subtitle,
+              style: getLargeTextStyle(context),
+            ),
+          ],
+        ),
       ),
     );
   }
