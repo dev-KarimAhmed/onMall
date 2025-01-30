@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:on_mall/core/services/shared_prefs/pref_keys.dart';
+import 'package:on_mall/core/services/shared_prefs/shared_pref_service.dart';
 
 
 part 'app_state.dart';
@@ -24,7 +26,7 @@ class AppCubit extends Cubit<AppState> {
   void getSavedLanguage() {
     final hasLanguage = SharedPref().containPreference(SharedPrefKeys.langKey);
     if (hasLanguage) {
-      // currentLanguage = SharedPref().getString(SharedPrefKeys.langKey) ?? 'en';
+      currentLanguage = SharedPref().getString(SharedPrefKeys.langKey) ?? 'en';
       emit(AppState.languageChange(locale: Locale(currentLanguage)));
     } else {
       emit(const AppState.languageChange(locale: Locale('en')));
