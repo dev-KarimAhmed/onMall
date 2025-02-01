@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:on_mall/core/functions/translate_word.dart';
 import 'package:on_mall/core/services/shared_prefs/pref_keys.dart';
 import 'package:on_mall/core/services/shared_prefs/shared_pref_service.dart';
 

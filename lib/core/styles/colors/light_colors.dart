@@ -4,9 +4,9 @@ class LightColors {
   static const Color mainColor =
       Color(0xffFFFFFF); // Clean white for backgrounds
   static const Color primaryColor =
-      Color(0xff008080); // Elegant teal for branding
+      Color(0xff01A0F5); // Techy and engaging blue for CTA
   static const Color gradientColor =
-      Color(0xff00E5FF); // Vibrant cyan for modern feel
+      Color.fromARGB(255, 0, 122, 188); // Vibrant cyan for modern feel
   static const Color accentBlue =
       Color(0xff01A0F5); // Techy and engaging blue for CTA
   static const Color redColor =

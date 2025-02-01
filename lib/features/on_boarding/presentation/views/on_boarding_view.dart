@@ -1,14 +1,17 @@
+
 import 'package:flutter/material.dart';
 import 'package:on_mall/core/common/animation/animate_do.dart';
 import 'package:on_mall/core/common/widgets/custom_linear_button.dart';
+import 'package:on_mall/core/extensions/context_extension.dart';
 import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
 import 'package:on_mall/core/language/lang_keys.dart';
+import 'package:on_mall/core/routes/app_routes.dart';
 import 'package:on_mall/core/styles/helpers/font_weight_helper.dart';
 import 'package:on_mall/core/styles/images/app_assets.dart';
-import 'package:on_mall/features/on_boarding/views/widgets/custom_lang_dropmenu.dart';
-import 'package:on_mall/features/on_boarding/views/widgets/on_boarding_page.dart';
+import 'package:on_mall/features/on_boarding/presentation/views/widgets/custom_lang_dropmenu.dart';
+import 'package:on_mall/features/on_boarding/presentation/views/widgets/on_boarding_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingView extends StatefulWidget {
@@ -62,7 +65,9 @@ class _OnboardingViewState extends State<OnboardingView> {
                 duration: 300,
                 child: CustomLinearButton(
                   width: 88,
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pushReplacementNamed(AppRoutes.loginScreen);
+                  },
                   child: Text(
                     translateWord(context, Langkeys.skip),
                     style: getBodyMediumTextStyle(context).copyWith(
@@ -104,7 +109,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                 ),
                 onPressed: () {
                   if (currentPage == 1) {
-                    // navigateWithoutBack(context, const LoginView());
+                    context.pushReplacementNamed(AppRoutes.loginScreen);
                   } else {
                     pageController.animateToPage(
                       currentPage + 1,
