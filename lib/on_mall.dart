@@ -10,7 +10,6 @@ import 'package:on_mall/core/language/app_localization_setup.dart';
 import 'package:on_mall/core/routes/app_routes.dart';
 import 'package:on_mall/core/styles/theme/app_theme.dart';
 
-
 class OnMall extends StatelessWidget {
   const OnMall({super.key});
 
@@ -21,9 +20,7 @@ class OnMall extends StatelessWidget {
       builder: (_, value, __) {
         if (value) {
           return BlocProvider(
-            create: (context) => sl<AppCubit>()
-              ..getSavedLanguage(),
-              
+            create: (context) => sl<AppCubit>()..getSavedLanguage(),
             child: BlocBuilder<AppCubit, AppState>(
               builder: (context, state) {
                 final cubit = BlocProvider.of<AppCubit>(context);

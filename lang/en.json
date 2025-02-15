@@ -10,5 +10,8 @@
     "subtitle2" : "Discover products, check out stores, and visit them to buy what you want.",
     "skip" : "Skip",
     "english" : "English",
-    "arabic" : "Arabic"
+    "arabic" : "Arabic",
+    "forgot_password" : "Forgot Password?",
+    "or" : "Or",
+    "email" : "Email"
 }
