@@ -13,4 +13,10 @@ class Langkeys {
   static const String register = 'register';
   static const String password = 'password';
   static const String confirmPassword = 'confirm_password';
+  static const String signInWithGoogle = 'sign_in_with_google';
+  static const String signInAnonymously = 'sign_in_anonymouses';
+  static const String haveAnAccount = 'have_an_account';
+  static const String dontHaveAnAccount = 'dont_have_an_account';
+  static const String name = 'name';
+  static const String submit = 'submit';
 }

@@ -5,27 +5,26 @@ import 'package:on_mall/core/common/widgets/custom_container_body.dart';
 import 'package:on_mall/core/common/widgets/custom_linear_button.dart';
 import 'package:on_mall/core/common/widgets/custom_text_field.dart';
 import 'package:on_mall/core/extensions/context_extension.dart';
-import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
 import 'package:on_mall/core/language/lang_keys.dart';
 import 'package:on_mall/core/routes/app_routes.dart';
 import 'package:on_mall/core/styles/helpers/font_weight_helper.dart';
 import 'package:on_mall/features/authentication/presentation/views/widgets/custom_btn_with_image.dart';
-import 'package:on_mall/features/authentication/presentation/views/widgets/custom_divider.dart';
 import 'package:on_mall/features/authentication/presentation/views/widgets/custom_or_divider.dart';
 import 'package:on_mall/features/authentication/presentation/views/widgets/custom_text_btn.dart';
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({
+class RegisterForm extends StatefulWidget {
+  const RegisterForm({
     super.key,
   });
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<RegisterForm> createState() => _RegisterFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _RegisterFormState extends State<RegisterForm> {
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   @override
@@ -41,10 +40,17 @@ class _LoginFormState extends State<LoginForm> {
             // ),
             const RSizedBox(height: 15),
             Text(
-              translateWord(context, Langkeys.login),
+              translateWord(context, Langkeys.register),
               style: getBodyLargeTextStyle(context).copyWith(
                 fontWeight: FontWeight.bold,
               ),
+            ),
+            const RSizedBox(height: 20),
+            CustomTextField(
+              controller: nameController,
+              keyboardType: TextInputType.name,
+              prefixIcon: const Icon(Icons.person),
+              hintText: translateWord(context, Langkeys.name),
             ),
             const RSizedBox(height: 20),
             CustomTextField(
@@ -64,21 +70,10 @@ class _LoginFormState extends State<LoginForm> {
                   onPressed: () {}, icon: const Icon(Icons.remove_red_eye)),
             ),
             const RSizedBox(height: 20),
-            InkWell(
-              onTap: () => context.pushNamed(AppRoutes.forgotPasswordScreen),
-              child: Text(
-                translateWord(context, Langkeys.forgotPassword),
-                style: getLargeTextStyle(context).copyWith(
-                  fontWeight: FontWeightHelper.bold,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-            ),
-            const RSizedBox(height: 20),
             CustomLinearButton(
               width: double.infinity,
               child: Text(
-                translateWord(context, Langkeys.login),
+                translateWord(context, Langkeys.register),
                 style: getLargeTextStyle(context).copyWith(
                   color: Colors.white,
                 ),
@@ -109,13 +104,13 @@ class _LoginFormState extends State<LoginForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  translateWord(context, Langkeys.dontHaveAnAccount),
+                  translateWord(context, Langkeys.haveAnAccount),
                   style: getMediumTextStyle(context),
                 ),
                 const RSizedBox(width: 5),
                 CustomTextBtn(
-                  text: Langkeys.register,
-                  onPressed: () => context.pushNamed(AppRoutes.registerScreen),
+                  text: Langkeys.login,
+                  onPressed: () => context.pop(),
                 ),
               ],
             ),
