@@ -87,7 +87,9 @@ class _LoginFormState extends State<LoginForm> {
                   color: Colors.white,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                context.pushNamed(AppRoutes.navBarView);
+              },
             ),
             const RSizedBox(height: 15),
             const CustomORDivider(),
