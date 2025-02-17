@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "579272861344",
+    "project_id": "onmall-8fe61",
+    "storage_bucket": "onmall-8fe61.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579272861344:android:f97a16c319b7a1229e8bc5",
+        "android_client_info": {
+          "package_name": "com.online.mall"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7Zy-IddgV0qXSV-RMNVAsS5xYIfHkCLQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

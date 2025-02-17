@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:on_mall/core/common/widgets/cached_image.dart';
 import 'package:on_mall/core/common/widgets/custom_container_body.dart';
 import 'package:on_mall/core/functions/build_header.dart';
 import 'package:on_mall/core/functions/get_color.dart';
@@ -201,10 +202,11 @@ class AutoCarouselSliderState extends State<AutoCarouselSlider> {
           itemCount: images.length,
           itemBuilder:
               (BuildContext context, int itemIndex, int pageViewIndex) {
-            return Image(
-              image: NetworkImage(
-                images[itemIndex],
-              ), // Replace with your actual image path
+            return CachedImage(
+              imageUrl: images[itemIndex],
+              height: 150.h,
+              width: 200.w,
+              fit: BoxFit.contain,
             );
           },
           options: CarouselOptions(

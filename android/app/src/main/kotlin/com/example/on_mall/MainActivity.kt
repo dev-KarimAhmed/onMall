@@ -1,4 +1,4 @@
-package com.example.on_mall
+package com.online.mall
 
 import io.flutter.embedding.android.FlutterActivity
 
