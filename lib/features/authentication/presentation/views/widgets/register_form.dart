@@ -8,8 +8,6 @@ import 'package:on_mall/core/extensions/context_extension.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
 import 'package:on_mall/core/language/lang_keys.dart';
-import 'package:on_mall/core/routes/app_routes.dart';
-import 'package:on_mall/core/styles/helpers/font_weight_helper.dart';
 import 'package:on_mall/features/authentication/presentation/views/widgets/custom_btn_with_image.dart';
 import 'package:on_mall/features/authentication/presentation/views/widgets/custom_or_divider.dart';
 import 'package:on_mall/features/authentication/presentation/views/widgets/custom_text_btn.dart';
@@ -27,6 +25,7 @@ class _RegisterFormState extends State<RegisterForm> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool secureText = true;
   @override
   Widget build(BuildContext context) {
     return CustomContainerBody(
@@ -67,7 +66,12 @@ class _RegisterFormState extends State<RegisterForm> {
               obscureText: true,
               prefixIcon: const Icon(Icons.lock),
               suffixIcon: IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.remove_red_eye)),
+                onPressed: () {
+                  setState(() => secureText = !secureText);
+                },
+                icon: Icon(
+                    secureText ? Icons.visibility_off : Icons.remove_red_eye),
+              ),
             ),
             const RSizedBox(height: 20),
             CustomLinearButton(
@@ -118,5 +122,13 @@ class _RegisterFormState extends State<RegisterForm> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+    super.dispose();
   }
 }

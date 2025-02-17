@@ -9,9 +9,16 @@ import 'package:on_mall/core/functions/translate_word.dart';
 import 'package:on_mall/core/language/lang_keys.dart';
 import 'package:on_mall/features/authentication/presentation/views/functions/builde_auth_header.dart';
 
-class ForgotPasswordView extends StatelessWidget {
-  ForgotPasswordView({super.key});
+class ForgotPasswordView extends StatefulWidget {
+  const ForgotPasswordView({super.key});
+
+  @override
+  State<ForgotPasswordView> createState() => _ForgotPasswordViewState();
+}
+
+class _ForgotPasswordViewState extends State<ForgotPasswordView> {
   final TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,5 +70,11 @@ class ForgotPasswordView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }

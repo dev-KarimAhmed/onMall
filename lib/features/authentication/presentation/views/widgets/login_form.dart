@@ -5,14 +5,12 @@ import 'package:on_mall/core/common/widgets/custom_container_body.dart';
 import 'package:on_mall/core/common/widgets/custom_linear_button.dart';
 import 'package:on_mall/core/common/widgets/custom_text_field.dart';
 import 'package:on_mall/core/extensions/context_extension.dart';
-import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
 import 'package:on_mall/core/language/lang_keys.dart';
 import 'package:on_mall/core/routes/app_routes.dart';
 import 'package:on_mall/core/styles/helpers/font_weight_helper.dart';
 import 'package:on_mall/features/authentication/presentation/views/widgets/custom_btn_with_image.dart';
-import 'package:on_mall/features/authentication/presentation/views/widgets/custom_divider.dart';
 import 'package:on_mall/features/authentication/presentation/views/widgets/custom_or_divider.dart';
 import 'package:on_mall/features/authentication/presentation/views/widgets/custom_text_btn.dart';
 
@@ -28,6 +26,7 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool secureText = true;
   @override
   Widget build(BuildContext context) {
     return CustomContainerBody(
@@ -58,10 +57,15 @@ class _LoginFormState extends State<LoginForm> {
               controller: passwordController,
               hintText: translateWord(context, Langkeys.password),
               keyboardType: TextInputType.visiblePassword,
-              obscureText: true,
+              obscureText: secureText,
               prefixIcon: const Icon(Icons.lock),
               suffixIcon: IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.remove_red_eye)),
+                  onPressed: () {
+                    setState(() => secureText = !secureText);
+                  },
+                  icon: Icon(secureText
+                      ? Icons.visibility_off
+                      : Icons.remove_red_eye)),
             ),
             const RSizedBox(height: 20),
             InkWell(
@@ -123,5 +127,12 @@ class _LoginFormState extends State<LoginForm> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 }
