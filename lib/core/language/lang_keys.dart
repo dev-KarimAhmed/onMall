@@ -19,4 +19,8 @@ class Langkeys {
   static const String dontHaveAnAccount = 'dont_have_an_account';
   static const String name = 'name';
   static const String submit = 'submit';
+  static const String home = 'home';
+  static const String stores = 'stores';
+  static const String favorite = 'favorite';
+  static const String profile = 'profile';
 }
