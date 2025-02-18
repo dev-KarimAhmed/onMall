@@ -23,5 +23,9 @@
     "home" : "Home",
     "stores" : "Stores",
     "favorite" : "Favorite",
-    "profile" : "Profile"
+    "profile" : "Profile",
+    "subscribed" : "Subscribed",
+    "show_all" : "Show All",
+    "search" : "Search",
+    "welcome" : "Welcome"
 }

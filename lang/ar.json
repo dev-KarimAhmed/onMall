@@ -23,6 +23,10 @@
      "stores" : "المتاجر",
      "favorite" : "المفضلة",
      "profile" : "الملف الشخصي",
-     "submit" : "إرسال"
+     "submit" : "إرسال",
+      "subscribed" : "متاجر مشترك بها",
+  "show_all" : "اظهار الكل",
+  "search" : "ابحث",
+  "welcome" : "مرحبا"
 
 }

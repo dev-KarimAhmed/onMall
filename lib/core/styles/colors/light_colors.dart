@@ -18,5 +18,5 @@ class LightColors {
   static const Color greenColor =
       Color(0xff2CA484); // Trustworthy green for pricing, confirmation
   static const Color cardColor =
-      Color(0xffF6F6F6); // Soft grey for product backgrounds
+      Color.fromARGB(255, 246, 245, 245); // Soft grey for product backgrounds
 }

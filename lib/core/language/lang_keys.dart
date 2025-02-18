@@ -23,4 +23,8 @@ class Langkeys {
   static const String stores = 'stores';
   static const String favorite = 'favorite';
   static const String profile = 'profile';
+  static const String subscribed = 'subscribed';
+  static const String search = 'search';
+  static const String showAll = 'show_all';
+  static const String welcome = 'welcome';
 }
