@@ -7,6 +7,7 @@ import 'package:on_mall/core/functions/build_header.dart';
 import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
+import 'package:on_mall/features/home/presentation/views/widgets/custom_carousel.dart';
 import 'package:on_mall/features/home/presentation/views/widgets/custom_icon.dart';
 
 class HomeView extends StatefulWidget {
@@ -75,30 +76,26 @@ class _HomeViewState extends State<HomeView> with WidgetsBindingObserver {
                         ],
                       ),
                       const Spacer(),
-                      Row(
-                        children: [
-                          CustomIconBtn(
-                            icon: Stack(
-                              children: [
-                                const Icon(Icons.notifications_none_outlined),
-                                Positioned(
-                                  left: 13,
-                                  bottom: 15,
-                                  child: Container(
-                                    width: 6,
-                                    height: 6,
-                                    padding: const EdgeInsets.all(2),
-                                    decoration: BoxDecoration(
-                                      color: Colors.red,
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                  ),
+                      CustomIconBtn(
+                        icon: Stack(
+                          children: [
+                            const Icon(Icons.notifications_none_outlined),
+                            Positioned(
+                              left: 13,
+                              bottom: 15,
+                              child: Container(
+                                width: 6,
+                                height: 6,
+                                padding: const EdgeInsets.all(2),
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(50),
                                 ),
-                              ],
+                              ),
                             ),
-                            onTap: () {},
-                          ),
-                        ],
+                          ],
+                        ),
+                        onTap: () {},
                       ),
                     ],
                   ),
@@ -117,8 +114,16 @@ class _HomeViewState extends State<HomeView> with WidgetsBindingObserver {
                       prefixIcon: const Icon(Icons.search_rounded),
                       suffixIcon: Padding(
                         padding: !isEnglish(context)
-                            ? const EdgeInsets.only(left: 4.0)
-                            : const EdgeInsets.only(right: 4.0),
+                            ? const EdgeInsets.only(
+                                left: 2.0,
+                                bottom: 2,
+                                top: 2,
+                              )
+                            : const EdgeInsets.only(
+                                right: 2.0,
+                                bottom: 2,
+                                top: 2,
+                              ),
                         child: ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: getColors(context).primaryColor,
@@ -176,73 +181,3 @@ class _HomeViewState extends State<HomeView> with WidgetsBindingObserver {
   }
 }
 
-List<String> images = [
-  "https://cdn-icons-png.flaticon.com/128/3275/3275391.png",
-  "https://cdn-icons-png.flaticon.com/128/9752/9752768.png",
-  "https://cdn-icons-png.flaticon.com/128/7562/7562565.png",
-];
-
-class AutoCarouselSlider extends StatefulWidget {
-  const AutoCarouselSlider({
-    super.key,
-  });
-
-  @override
-  AutoCarouselSliderState createState() => AutoCarouselSliderState();
-}
-
-class AutoCarouselSliderState extends State<AutoCarouselSlider> {
-  int _currentIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CarouselSlider.builder(
-          itemCount: images.length,
-          itemBuilder:
-              (BuildContext context, int itemIndex, int pageViewIndex) {
-            return CachedImage(
-              imageUrl: images[itemIndex],
-              height: 150.h,
-              width: 200.w,
-              fit: BoxFit.contain,
-            );
-          },
-          options: CarouselOptions(
-            aspectRatio: 16 / 9,
-            autoPlayCurve: Curves.easeInOutSine,
-            // height: 200,
-            autoPlay: images.length > 1 ? true : false,
-            enableInfiniteScroll: images.length > 1 ? true : false,
-            enlargeCenterPage: true,
-            onPageChanged: (index, reason) {
-              setState(() {
-                _currentIndex = index;
-              });
-            },
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: images.map((image) {
-            int index = images.indexOf(image);
-            return AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              width: 12.0.w,
-              height: 5.0.h,
-              margin:
-                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-                color: _currentIndex == index
-                    ? getColors(context).primaryColor
-                    : getColors(context).greyColor,
-              ),
-            );
-          }).toList(),
-        ),
-      ],
-    );
-  }
-}
