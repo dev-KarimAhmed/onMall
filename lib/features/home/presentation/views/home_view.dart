@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:on_mall/core/common/widgets/custom_container_body.dart';
 import 'package:on_mall/core/common/widgets/product_card.dart';
+import 'package:on_mall/core/common/widgets/product_listview.dart';
 import 'package:on_mall/core/functions/build_header.dart';
 import 'package:on_mall/core/functions/is_portrait.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
@@ -80,24 +81,7 @@ class _HomeViewState extends State<HomeView> with WidgetsBindingObserver {
                   onpressed: () {},
                 ),
                 const RSizedBox(height: 10),
-                ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: (10 / (isPortrait(context) ? 1 : 2)).ceil(),
-                  itemBuilder: (context, index) {
-                    if (isPortrait(context)) {
-                      return const CustomProductCard();
-                    } else {
-                      return Row(
-                        children: [
-                          const Expanded(child: CustomProductCard()),
-                          if (index * 2 + 1 < 10)
-                            const Expanded(child: CustomProductCard()),
-                        ],
-                      );
-                    }
-                  },
-                )
+                const ProductsListView()
 
                 // const CustomProductCard(),
               ],

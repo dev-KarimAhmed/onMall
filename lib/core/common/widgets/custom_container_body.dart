@@ -48,7 +48,7 @@ class _CustomContainerBodyState extends State<CustomContainerBody>
   @override
   Widget build(BuildContext context) {
     return Container(
-      // clipBehavior: Clip.hardEdge,
+      clipBehavior: Clip.hardEdge,
       width: double.infinity,
       height: isPortrait(context)
           ? widget.height ?? MediaQuery.sizeOf(context).height * .75
