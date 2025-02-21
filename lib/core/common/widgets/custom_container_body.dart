@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/is_portrait.dart';
 
-
 class CustomContainerBody extends StatefulWidget {
   const CustomContainerBody({
     super.key,
@@ -49,6 +48,7 @@ class _CustomContainerBodyState extends State<CustomContainerBody>
   @override
   Widget build(BuildContext context) {
     return Container(
+      // clipBehavior: Clip.hardEdge,
       width: double.infinity,
       height: isPortrait(context)
           ? widget.height ?? MediaQuery.sizeOf(context).height * .75
@@ -66,7 +66,7 @@ class _CustomContainerBodyState extends State<CustomContainerBody>
               ? 24
               : 0),
         ),
-        color:getColors(context).mainColor,
+        color: getColors(context).mainColor,
       ),
       child: SingleChildScrollView(
         physics: widget.scrollPhysics,

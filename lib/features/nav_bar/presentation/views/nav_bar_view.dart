@@ -7,8 +7,6 @@ import 'package:on_mall/features/profile/presentation/views/profile_view.dart';
 import 'package:on_mall/features/stores/presentation/views/stores_view.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
-
-
 class NavBarView extends StatefulWidget {
   const NavBarView({super.key});
 
@@ -16,17 +14,18 @@ class NavBarView extends StatefulWidget {
   State<NavBarView> createState() => _NavBarViewState();
 }
 
-class _NavBarViewState extends State<NavBarView> {
+class _NavBarViewState extends State<NavBarView> with WidgetsBindingObserver {
   final PersistentTabController _controller = PersistentTabController(initialIndex: 0);
   bool _isKeyboardVisible = false;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.platformDispatcher.onMetricsChanged = _onMetricsChanged;
+    WidgetsBinding.instance.addObserver(this);
   }
 
-  void _onMetricsChanged() {
+  @override
+  void didChangeMetrics() {
     final bottomInset = WidgetsBinding.instance.platformDispatcher.views.first.viewInsets.bottom;
     if (_isKeyboardVisible != (bottomInset > 0)) {
       setState(() {
@@ -35,43 +34,48 @@ class _NavBarViewState extends State<NavBarView> {
     }
   }
 
-  List<Widget> _buildScreens() => const [
-        HomeView(),
-        StoresView(),
-        FavoriteView(),
-        ProfileView(),
+  List<Widget> _buildScreens() => [
+        const HomeView(),
+        const StoresView(),
+        const FavoriteView(),
+        const ProfileView(),
       ];
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      padding: EdgeInsets.zero,
-      navBarHeight: 63,
-      isVisible: !_isKeyboardVisible,
-      confineToSafeArea: true,
-      handleAndroidBackButtonPress: true,
-      resizeToAvoidBottomInset: true,
-      hideNavigationBarWhenKeyboardAppears: true,
-      stateManagement: true,
-      popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
-      decoration: NavBarDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFFF7F7F7), Color(0xFFEFEFEF)],
-        ),
-        borderRadius: BorderRadius.circular(8),
-        colorBehindNavBar: getColors(context).mainColor!,
+    return Scaffold(
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          return PersistentTabView(
+            padding: EdgeInsets.zero,
+            navBarHeight: _isKeyboardVisible ? 0 : 63,
+            isVisible: !_isKeyboardVisible,
+            confineToSafeArea: true,
+            handleAndroidBackButtonPress: true,
+            hideNavigationBarWhenKeyboardAppears: true,
+            stateManagement: true,
+            popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
+            decoration: NavBarDecoration(
+              gradient: const LinearGradient(
+                colors: [Color(0xFFF7F7F7), Color(0xFFEFEFEF)],
+              ),
+              borderRadius: BorderRadius.circular(8),
+              colorBehindNavBar: getColors(context).mainColor!,
+            ),
+            context,
+            controller: _controller,
+            screens: _buildScreens(),
+            items: buildNavBarsItems(context),
+            navBarStyle: NavBarStyle.style7,
+          );
+        },
       ),
-      context,
-      controller: _controller,
-      screens: _buildScreens(),
-      items: buildNavBarsItems(context),
-      navBarStyle: NavBarStyle.style7,
     );
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.platformDispatcher.onMetricsChanged = null;
+    WidgetsBinding.instance.removeObserver(this);
     _controller.dispose();
     super.dispose();
   }

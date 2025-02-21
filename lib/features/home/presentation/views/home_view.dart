@@ -1,17 +1,16 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:on_mall/core/common/widgets/custom_container_body.dart';
-import 'package:on_mall/core/common/widgets/custom_linear_button.dart';
+import 'package:on_mall/core/common/widgets/product_card.dart';
 import 'package:on_mall/core/functions/build_header.dart';
-import 'package:on_mall/core/functions/get_color.dart';
-import 'package:on_mall/core/functions/get_text_style.dart';
+import 'package:on_mall/core/functions/is_portrait.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
 import 'package:on_mall/core/language/lang_keys.dart';
-import 'package:on_mall/core/styles/helpers/font_weight_helper.dart';
 import 'package:on_mall/features/home/presentation/views/widgets/categories_list.dart';
 import 'package:on_mall/features/home/presentation/views/widgets/custom_carousel.dart';
+import 'package:on_mall/features/home/presentation/views/widgets/custom_row_text_btn.dart';
 import 'package:on_mall/features/home/presentation/views/widgets/home_view_header.dart';
+import 'package:on_mall/features/home/presentation/views/widgets/horizontal_stores_list.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -54,6 +53,7 @@ class _HomeViewState extends State<HomeView> with WidgetsBindingObserver {
             const HomeViewHeader(),
           ]),
           CustomContainerBody(
+            // This is container the child wrapped with singleChildscrollview
             isKeyboardVisibleAgain: isKeyboardVisible,
             height: isKeyboardVisible
                 ? MediaQuery.sizeOf(context).height * .30
@@ -65,120 +65,41 @@ class _HomeViewState extends State<HomeView> with WidgetsBindingObserver {
                 const RSizedBox(height: 10),
                 const RSizedBox(height: 10),
                 const CategoriesList(),
+                // This is
                 const RSizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      translateWord(context, Langkeys.subscribed),
-                      style: getMediumTextStyle(context),
-                    ),
-                    CustomLinearButton(
-                      onPressed: () {},
-                      width: MediaQuery.sizeOf(context).width * 0.3,
-                      height: 36,
-                      child: Text(
-                        translateWord(context, Langkeys.showAll),
-                        style: getMediumTextStyle(context).copyWith(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
+                CustomTextRowBttn(
+                  text: translateWord(context, Langkeys.subscribed),
+                  onpressed: () {},
                 ),
                 const RSizedBox(height: 10),
-                SizedBox(
-                  height: 158.h,
-                  child: ListView.builder(
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                        width: 188.w,
-                        child: Card(
-                          color: getColors(context).cardColor,
-                          child: Padding(
-                            padding: const EdgeInsets.all(6.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.share,
-                                      ),
-                                    ),
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.notifications_active_rounded,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    const CircleAvatar(
-                                      radius: 20,
-                                      backgroundImage:
-                                          CachedNetworkImageProvider(
-                                        "https://cdn-icons-png.flaticon.com/128/7845/7845240.png",
-                                      ),
-                                    ),
-                                    Text(
-                                      "Store Name",
-                                      style:
-                                          getMediumTextStyle(context).copyWith(
-                                        fontWeight: FontWeightHelper.medium,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const Icon(
-                                          Icons.location_on_outlined,
-                                          size: 20,
-                                        ),
-                                        RSizedBox(width: 5.w),
-                                        Text(
-                                          "Sohag",
-                                          style: getLargeTextStyle(context),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "4.5",
-                                          style: getLargeTextStyle(context),
-                                        ),
-                                        SizedBox(width: 5.w),
-                                        const Icon(
-                                          Icons.star,
-                                          color: Colors.amber,
-                                          // size: 15,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
+                const HorizontalStoresList(),
+                // This is a list of products
+                const RSizedBox(height: 10),
+                CustomTextRowBttn(
+                  text: translateWord(context, Langkeys.popular),
+                  onpressed: () {},
+                ),
+                const RSizedBox(height: 10),
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: (10 / (isPortrait(context) ? 1 : 2)).ceil(),
+                  itemBuilder: (context, index) {
+                    if (isPortrait(context)) {
+                      return const CustomProductCard();
+                    } else {
+                      return Row(
+                        children: [
+                          const Expanded(child: CustomProductCard()),
+                          if (index * 2 + 1 < 10)
+                            const Expanded(child: CustomProductCard()),
+                        ],
                       );
-                    },
-                    itemCount: 10,
-                    scrollDirection: Axis.horizontal,
-                  ),
+                    }
+                  },
                 )
+
+                // const CustomProductCard(),
               ],
             ),
           ),

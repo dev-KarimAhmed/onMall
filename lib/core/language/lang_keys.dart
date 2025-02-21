@@ -75,4 +75,5 @@ class Langkeys {
   static const String sleepwear = 'sleepwear';
   static const String swimwear = 'swimwear';
   static const String accessories = 'accessories';
+  static const String popular = 'popular';
 }
