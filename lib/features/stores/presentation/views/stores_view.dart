@@ -46,8 +46,8 @@ class StoresView extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           itemCount: 10,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: isPortrait(context) ? 2 : 3,
-            childAspectRatio: 1.2 / 1,
+            crossAxisCount: isPortrait(context) ? 1 : 3,
+            childAspectRatio: 1.5 / 1,
           ),
           itemBuilder: (context, index) {
             return const StoreCard();

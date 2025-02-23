@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +5,8 @@ import 'package:on_mall/core/common/widgets/custom_container_body.dart';
 import 'package:on_mall/core/common/widgets/custom_linear_button.dart';
 import 'package:on_mall/core/functions/build_header.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
+import 'package:on_mall/core/functions/translate_word.dart';
+import 'package:on_mall/core/language/lang_keys.dart';
 import 'package:on_mall/features/store_details/presentation/manger/store_details_cubit.dart';
 import 'package:on_mall/features/store_details/presentation/views/widgets/custom_toggle_button.dart';
 
@@ -58,7 +59,7 @@ class StoreDetailsView extends StatelessWidget {
                                   color: Colors.white,
                                 ),
                                 Text(
-                                  "Sohag, Akhmim",
+                                  translateWord(context, Langkeys.sohag),
                                   style: getMediumTextStyle(context).copyWith(
                                     color: Colors.white,
                                   ),

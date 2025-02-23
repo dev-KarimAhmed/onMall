@@ -1,13 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:on_mall/core/common/widgets/product_card.dart';
-import 'package:on_mall/core/extensions/context_extension.dart';
 import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
+import 'package:on_mall/core/functions/navigations.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
 import 'package:on_mall/core/language/lang_keys.dart';
-import 'package:on_mall/core/routes/app_routes.dart';
 import 'package:on_mall/core/styles/helpers/font_weight_helper.dart';
 import 'package:on_mall/features/store_details/presentation/views/store_details_view.dart';
 
@@ -19,14 +17,9 @@ class StoreCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const StoreDetailsView(),
-        ),
-      ),
+      onTap: () => navigateTo(context, const StoreDetailsView()),
       child: SizedBox(
-        width: 188.w,
+        width: 200.w,
         child: Card(
           color: getColors(context).cardColor,
           child: Padding(

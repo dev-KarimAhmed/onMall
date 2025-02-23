@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:on_mall/core/common/widgets/custom_container_body.dart';
-import 'package:on_mall/core/common/widgets/product_card.dart';
 import 'package:on_mall/core/common/widgets/product_listview.dart';
 import 'package:on_mall/core/functions/build_header.dart';
-import 'package:on_mall/core/functions/is_portrait.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
 import 'package:on_mall/core/language/lang_keys.dart';
 import 'package:on_mall/features/home/presentation/views/widgets/categories_list.dart';
