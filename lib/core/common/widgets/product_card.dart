@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:on_mall/core/common/widgets/cached_image.dart';
 import 'package:on_mall/core/common/widgets/custom_linear_button.dart';
+import 'package:on_mall/core/extensions/context_extension.dart';
 import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
+import 'package:on_mall/core/routes/app_routes.dart';
 import 'package:on_mall/core/styles/helpers/font_weight_helper.dart';
+import 'package:on_mall/features/store_details/presentation/views/store_details_view.dart';
 
 class CustomProductCard extends StatelessWidget {
   const CustomProductCard({

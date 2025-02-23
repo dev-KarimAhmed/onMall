@@ -6,6 +6,7 @@ import 'package:on_mall/features/authentication/presentation/views/login_view.da
 import 'package:on_mall/features/authentication/presentation/views/register_view.dart';
 import 'package:on_mall/features/nav_bar/presentation/views/nav_bar_view.dart';
 import 'package:on_mall/features/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:on_mall/features/store_details/presentation/views/store_details_view.dart';
 
 
 class AppRoutes {
@@ -14,6 +15,7 @@ class AppRoutes {
   static const String registerScreen = 'register';
   static const String forgotPasswordScreen = 'forgotPasswordScreen';
   static const String navBarView = 'navBarView';
+  static const String storeDetailsView = 'storeDetailsView';
 
 
   static Route<void> onGenerateRout(RouteSettings settings) {
@@ -29,6 +31,8 @@ class AppRoutes {
         return BaseRoute(page: const ForgotPasswordView());
       case navBarView:
         return BaseRoute(page: const NavBarView());
+      case storeDetailsView:
+        return BaseRoute(page: const StoreDetailsView());  
       default:
         return BaseRoute(page: const UnderBuilderScreen());
     }
