@@ -76,6 +76,19 @@
   "sleepwear": "ملابس نوم",
   "swimwear": "ملابس سباحة",
   "accessories": "إكسسوارات",
-  "popular": "الاكثر مبيعا"
+  "popular": "الاكثر مبيعا",
+  "edit_profile": "تعديل الملف الشخصي",
+  "language": "اللغة",
+  "privacy_policy": "سياسة الخصوصية",
+  "about_us": "من نحن",
+  "logout": "تسجيل الخروج",
+  "change_password": "تغيير كلمة المرور",
+  "old_password": "كلمة المرور القديمة",
+  "new_password": "كلمة المرور الجديدة",
+  "confirm_new_password": "تأكيد كلمة المرور الجديدة",
+  "delete_account": "حذف الحساب",
+  "delete_account_message": "هل أنت متأكد أنك تريد حذف حسابك؟",
+  "yes": "نعم",
+  "no": "لا"
 
 }

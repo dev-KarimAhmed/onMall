@@ -76,5 +76,18 @@
   "sleepwear": "Sleepwear",
   "swimwear": "Swimwear",
   "accessories": "Accessories",
-  "popular": "Popular"
+  "popular": "Popular",
+  "edit_profile": "Edit Profile",
+  "language": "Language",
+  "privacy_policy": "Privacy Policy",
+  "about_us": "About Us",
+  "logout": "Logout",
+  "change_password": "Change Password",
+  "old_password": "Old Password",
+  "new_password": "New Password",
+  "confirm_new_password": "Confirm New Password",
+  "delete_account": "Delete Account",
+  "delete_account_message": "Are you sure you want to delete your account?",
+  "yes": "Yes",
+  "no": "No"
 }

@@ -76,4 +76,17 @@ class Langkeys {
   static const String swimwear = 'swimwear';
   static const String accessories = 'accessories';
   static const String popular = 'popular';
+    static const String editProfile = "edit_profile";
+  static const String language = "language";
+  static const String privacyPolicy = "privacy_policy";
+  static const String aboutUs = "about_us";
+  static const String logout = "logout";
+  static const String changePassword = "change_password";
+  static const String oldPassword = "old_password";
+  static const String newPassword = "new_password";
+  static const String confirmNewPassword = "confirm_new_password";
+  static const String deleteAccount = "delete_account";
+  static const String deleteAccountMessage = "delete_account_message";
+  static const String yes = "yes";
+  static const String no = "no";
 }

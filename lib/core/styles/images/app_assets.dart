@@ -21,4 +21,5 @@ class AppAssets {
   static const skirt = 'assets/images/icons/skirt.png';
   static const socks = 'assets/images/icons/socks.png';
   static const suit = 'assets/images/icons/suit.png';
+  static const user = 'assets/images/core/user.png';
 }
