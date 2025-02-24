@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:on_mall/core/common/widgets/custom_container_body.dart';
 import 'package:on_mall/core/common/widgets/custom_linear_button.dart';
+import 'package:on_mall/core/common/widgets/product_card.dart';
+import 'package:on_mall/core/common/widgets/product_listview.dart';
 import 'package:on_mall/core/functions/build_header.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
@@ -102,9 +104,42 @@ class StoreDetailsView extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10.h),
+                    if (cubit.currentValue == 0) ...[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text("Category"),
+                          DropdownButton(
+                              value: 1,
+                              items: const [
+                                DropdownMenuItem(
+                                  value: 0,
+                                  child: Text("Shoes"),
+                                ),
+                                DropdownMenuItem(
+                                  value: 1,
+                                  child: Text("T-shirt"),
+                                ),
+                                DropdownMenuItem(
+                                  value: 2,
+                                  child: Text("Socks"),
+                                ),
+                              ],
+                              onChanged: (value) {})
+                        ],
+                      ),
+                    ],
                     cubit.currentValue == 0
-                        ? const Center(
-                            child: Text("Brands"),
+                        ? SizedBox(
+                            height: MediaQuery.sizeOf(context).height * .5,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              physics: const BouncingScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return const CustomProductCard();
+                              },
+                              itemCount: 10,
+                            ),
                           )
                         : cubit.currentValue == 1
                             ? const Center(
