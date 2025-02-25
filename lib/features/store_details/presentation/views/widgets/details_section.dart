@@ -47,7 +47,7 @@ class DetailsSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                translateWord(context, Langkeys.openStoreLocation),
+                "Store Address",
                 style: getLargeTextStyle(context).copyWith(
                   color: Colors.white,
                 ),

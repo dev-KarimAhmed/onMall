@@ -4,7 +4,9 @@ import 'package:on_mall/core/common/widgets/cached_image.dart';
 import 'package:on_mall/core/common/widgets/custom_linear_button.dart';
 import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
+import 'package:on_mall/core/functions/navigations.dart';
 import 'package:on_mall/core/styles/helpers/font_weight_helper.dart';
+import 'package:on_mall/features/product_details/presentation/views/product_details.dart';
 
 class CustomProductCard extends StatelessWidget {
   const CustomProductCard({
@@ -14,10 +16,11 @@ class CustomProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => navigateTo(context, const ProductDetailsView()),
       child: Stack(
         children: [
           Card(
+            color: getColors(context).cardColor,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
