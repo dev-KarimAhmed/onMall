@@ -89,5 +89,9 @@
   "delete_account": "Delete Account",
   "delete_account_message": "Are you sure you want to delete your account?",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+  "products":"Products",
+  "store_info":"Store Info",
+  "posts":"Posts",
+  "open_store_location":"Open Store Location"
 }

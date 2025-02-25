@@ -3,6 +3,8 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
+import 'package:on_mall/core/functions/translate_word.dart';
+import 'package:on_mall/core/language/lang_keys.dart';
 
 class CustomButtonToggle extends StatelessWidget {
   const CustomButtonToggle({
@@ -29,11 +31,12 @@ class CustomButtonToggle extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             localValue == 0
-                ? "Brands"
+                ? translateWord(context, Langkeys.products)
                 : localValue == 1
-                    ? "Details"
-                    : "Posts",
+                    ? translateWord(context, Langkeys.storeInfo)
+                    : translateWord(context, Langkeys.posts),
             style: getMediumTextStyle(context).copyWith(
+              fontSize: localValue == 1 ? 12 : null,
               color: value == localValue
                   ? getColors(context).mainColor
                   : getColors(context).blackColor,

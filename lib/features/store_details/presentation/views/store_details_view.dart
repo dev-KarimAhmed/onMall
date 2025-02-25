@@ -3,19 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:on_mall/core/common/widgets/custom_container_body.dart';
 import 'package:on_mall/core/common/widgets/custom_linear_button.dart';
-import 'package:on_mall/core/common/widgets/product_card.dart';
-import 'package:on_mall/core/common/widgets/product_listview.dart';
 import 'package:on_mall/core/functions/build_header.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
 import 'package:on_mall/core/language/lang_keys.dart';
 import 'package:on_mall/features/store_details/presentation/manger/store_details_cubit.dart';
+import 'package:on_mall/features/store_details/presentation/views/widgets/brands_list.dart';
+import 'package:on_mall/features/store_details/presentation/views/widgets/category_choose_list.dart';
 import 'package:on_mall/features/store_details/presentation/views/widgets/custom_toggle_button.dart';
+import 'package:on_mall/features/store_details/presentation/views/widgets/details_section.dart';
+import 'package:on_mall/features/store_details/presentation/views/widgets/posts_list.dart';
 
 class StoreDetailsView extends StatelessWidget {
   const StoreDetailsView({super.key});
 
-  // int value = 0;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -103,51 +104,14 @@ class StoreDetailsView extends StatelessWidget {
                         value: cubit.currentValue,
                       ),
                     ),
-                    SizedBox(height: 10.h),
                     if (cubit.currentValue == 0) ...[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text("Category"),
-                          DropdownButton(
-                              value: 1,
-                              items: const [
-                                DropdownMenuItem(
-                                  value: 0,
-                                  child: Text("Shoes"),
-                                ),
-                                DropdownMenuItem(
-                                  value: 1,
-                                  child: Text("T-shirt"),
-                                ),
-                                DropdownMenuItem(
-                                  value: 2,
-                                  child: Text("Socks"),
-                                ),
-                              ],
-                              onChanged: (value) {})
-                        ],
-                      ),
+                      const CategoryChooseList(),
                     ],
                     cubit.currentValue == 0
-                        ? SizedBox(
-                            height: MediaQuery.sizeOf(context).height * .5,
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              physics: const BouncingScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                return const CustomProductCard();
-                              },
-                              itemCount: 10,
-                            ),
-                          )
+                        ? const BrandsList()
                         : cubit.currentValue == 1
-                            ? const Center(
-                                child: Text("Description"),
-                              )
-                            : const Center(
-                                child: Text("Posts"),
-                              ),
+                            ? const DetailsSection()
+                            : const PostsList()
                   ],
                 ),
               ),

@@ -89,4 +89,8 @@ class Langkeys {
   static const String deleteAccountMessage = "delete_account_message";
   static const String yes = "yes";
   static const String no = "no";
+  static const String products ="products";
+  static const String storeInfo = "store_info";
+  static const String posts = "posts";
+  static const String openStoreLocation = "open_store_location";
 }
