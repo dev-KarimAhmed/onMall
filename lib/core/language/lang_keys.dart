@@ -93,4 +93,12 @@ class Langkeys {
   static const String storeInfo = "store_info";
   static const String posts = "posts";
   static const String openStoreLocation = "open_store_location";
+  static const String avilableForSale = "avilable_for_sale";
+  static const String discount = "discount";
+  static const String price = "price";
+  static const String priceBeforeDiscount = "price_before_discount";
+  static const String priceAfterDiscount = "price_after_discount";
+  static const String availabeColors = "availabe_colors";
+  static const String storeName = "store_name";
+  static const String address = "address";
 }

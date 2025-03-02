@@ -93,6 +93,14 @@
   "products": "المنتجات",
   "store_info": "معلومات المتجر",
   "posts": "المنشورات",
-  "open_store_location": "فتح عنوان المتجر"
+  "open_store_location": "فتح عنوان المتجر",
+  "avilable_for_sale" :"متوفر للبيع",
+  "discount":"الخصم",
+  "price":"السعر",
+  "price_before_discount":"السعر قبل الخصم",
+  "price_after_discount":"السعر بعد الخصم",
+  "availabe_colors":"الالوان المتاحة",
+  "store_name":"اسم المحل",
+  "address":"العنوان"
 
 }

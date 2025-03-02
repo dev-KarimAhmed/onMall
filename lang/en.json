@@ -93,5 +93,13 @@
   "products":"Products",
   "store_info":"Store Info",
   "posts":"Posts",
-  "open_store_location":"Open Store Location"
+  "open_store_location":"Open Store Location",
+  "avilable_for_sale" :"Avilable For Sale",
+  "discount":"Discount",
+  "price":"Price",
+  "price_before_discount":"Price Before Discount",
+  "price_after_discount":"Price After Discount",
+  "availabe_colors":"Available Colors",
+  "store_name":"Store Name",
+  "address":"Address"
 }

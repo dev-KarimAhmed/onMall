@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:on_mall/core/common/widgets/custom_linear_button.dart';
 import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
-import 'package:on_mall/core/functions/translate_word.dart';
-import 'package:on_mall/core/language/lang_keys.dart';
 
 class DetailsSection extends StatelessWidget {
   const DetailsSection({

@@ -1,8 +1,4 @@
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:on_mall/core/common/widgets/cached_image.dart';
 import 'package:on_mall/core/common/widgets/custom_linear_button.dart';
 import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/get_text_style.dart';
@@ -58,7 +54,7 @@ class ProductDetailsView extends StatelessWidget {
                 children: [
                   const Text("Product Name"),
                   Text(
-                    "Available for sale",
+                    translateWord(context, Langkeys.avilableForSale),
                     style: getSmallTextStyle(context).copyWith(
                       color: getColors(context).greenColor,
                     ),
@@ -66,36 +62,37 @@ class ProductDetailsView extends StatelessWidget {
                 ],
               ),
               Text(
-                "Lorem ipsum" * 15,
+                "Lorem ipsum Product Discription" * 15,
                 style: getMediumTextStyle(context),
               ),
-              const CustomRowProductDetails(
-                text1: "Discount",
+               CustomRowProductDetails(
+                text1:translateWord(context, Langkeys.discount),
+
                 text2: "50%",
               ),
               const CustomProductDetailsDivider(),
-              const CustomRowProductDetails(
-                text1: "Price Before Discount",
+               CustomRowProductDetails(
+                text1: translateWord(context, Langkeys.priceBeforeDiscount),
                 text2: "100",
               ),
               const CustomProductDetailsDivider(),
-              const CustomRowProductDetails(
-                text1: "Price After Discount",
+               CustomRowProductDetails(
+                text1: translateWord(context, Langkeys.priceAfterDiscount),
                 text2: "50",
               ),
               const CustomProductDetailsDivider(),
-              const CustomRowProductDetails(
-                text1: "Available Colors",
+               CustomRowProductDetails(
+                text1: translateWord(context, Langkeys.availabeColors),
                 text2: "red, green , white",
               ),
               const CustomProductDetailsDivider(),
-              const CustomRowProductDetails(
-                text1: "Store Name",
+               CustomRowProductDetails(
+                text1: translateWord(context, Langkeys.storeName),
                 text2: "Shiaka",
               ),
               const CustomProductDetailsDivider(),
-              const CustomRowProductDetails(
-                text1: "Store Address",
+               CustomRowProductDetails(
+                text1: translateWord(context, Langkeys.address),
                 text2: "Sohag-Akhmim",
               ),
               CustomLinearButton(
