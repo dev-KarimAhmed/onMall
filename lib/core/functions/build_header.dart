@@ -25,6 +25,8 @@ Widget buildHeader(BuildContext context, List<Widget> children,
                     )
                   : null,
               gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
                 colors: [
                   getColors(context).primaryColor!,
                   getColors(context).gradientColor!,

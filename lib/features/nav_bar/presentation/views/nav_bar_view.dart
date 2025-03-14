@@ -1,11 +1,11 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:on_mall/core/functions/get_color.dart';
+import 'package:on_mall/core/functions/get_color.dart' show getColors;
 import 'package:on_mall/features/favorite/presentation/views/favorite_view.dart';
 import 'package:on_mall/features/home/presentation/views/home_view.dart';
-import 'package:on_mall/features/nav_bar/presentation/views/functions/build_nav_bar_items.dart';
 import 'package:on_mall/features/profile/presentation/views/profile_view.dart';
-import 'package:on_mall/features/stores/presentation/views/stores_view.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:on_mall/features/stores/presentation/views/stores_view.dart'
+    show StoresView;
 
 class NavBarView extends StatefulWidget {
   const NavBarView({super.key});
@@ -15,7 +15,8 @@ class NavBarView extends StatefulWidget {
 }
 
 class _NavBarViewState extends State<NavBarView> with WidgetsBindingObserver {
-  final PersistentTabController _controller = PersistentTabController(initialIndex: 0);
+  int _currentIndex = 2;
+  final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   bool _isKeyboardVisible = false;
 
   @override
@@ -26,7 +27,8 @@ class _NavBarViewState extends State<NavBarView> with WidgetsBindingObserver {
 
   @override
   void didChangeMetrics() {
-    final bottomInset = WidgetsBinding.instance.platformDispatcher.views.first.viewInsets.bottom;
+    final bottomInset = WidgetsBinding
+        .instance.platformDispatcher.views.first.viewInsets.bottom;
     if (_isKeyboardVisible != (bottomInset > 0)) {
       setState(() {
         _isKeyboardVisible = bottomInset > 0;
@@ -35,48 +37,94 @@ class _NavBarViewState extends State<NavBarView> with WidgetsBindingObserver {
   }
 
   List<Widget> _buildScreens() => [
-        const HomeView(),
         const StoresView(),
         const FavoriteView(),
+        const HomeView(),
         const ProfileView(),
       ];
 
   @override
   Widget build(BuildContext context) {
+    final screens = _buildScreens();
+
     return Scaffold(
-      body: OrientationBuilder(
-        builder: (context, orientation) {
-          return PersistentTabView(
-            padding: EdgeInsets.zero,
-            navBarHeight: _isKeyboardVisible ? 0 : 63,
-            isVisible: !_isKeyboardVisible,
-            confineToSafeArea: true,
-            handleAndroidBackButtonPress: true,
-            hideNavigationBarWhenKeyboardAppears: true,
-            stateManagement: true,
-            popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
-            decoration: NavBarDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFFF7F7F7), Color(0xFFEFEFEF)],
-              ),
-              borderRadius: BorderRadius.circular(8),
-              colorBehindNavBar: getColors(context).mainColor!,
+      body: screens[_currentIndex],
+      bottomNavigationBar: _isKeyboardVisible
+          ? null
+          : CurvedNavigationBar(
+              key: _bottomNavigationKey,
+              index: _currentIndex,
+              height: 63.0,
+              items: [
+                Icon(
+                  Icons.favorite,
+                  size: 30,
+                ),
+                Icon(Icons.calendar_month, size: 30),
+                Icon(
+                  Icons.home,
+                  size: 30,
+                ),
+                CustomTaskIcon(
+                  icon: Icons.notifications,
+                ),
+                CustomTaskIcon(
+                  icon: Icons.shopping_cart,
+                ),
+              ],
+              color: getColors(context).mainColor!,
+              buttonBackgroundColor: const Color(0xFF1FACD1),
+              
+              backgroundColor: Colors.transparent,
+              animationCurve: Curves.easeInOut,
+              animationDuration: const Duration(milliseconds: 300),
+              // onTap: (index) {
+              //   setState(() {
+              //     _currentIndex = index;
+              //   });
+              // },
+              // letIndexChange: (index) => true,
             ),
-            context,
-            controller: _controller,
-            screens: _buildScreens(),
-            items: buildNavBarsItems(context),
-            navBarStyle: NavBarStyle.style7,
-          );
-        },
-      ),
     );
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    _controller.dispose();
     super.dispose();
+  }
+}
+
+class CustomTaskIcon extends StatelessWidget {
+  const CustomTaskIcon({
+    super.key,
+    required this.icon,
+  });
+  final IconData icon;
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Icon(
+          icon,
+          size: 30,
+        ),
+        Positioned(
+          top: 0,
+          right: 0,
+          child: CircleAvatar(
+            radius: 8,
+            backgroundColor: Color(0xff9747ff),
+            child: Text(
+              "6",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 8,
+              ),
+            ),
+          ),
+        )
+      ],
+    );
   }
 }

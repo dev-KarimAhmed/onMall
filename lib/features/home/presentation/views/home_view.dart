@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:on_mall/core/common/widgets/custom_container_body.dart';
 import 'package:on_mall/core/common/widgets/product_listview.dart';
 import 'package:on_mall/core/functions/build_header.dart';
+import 'package:on_mall/core/functions/get_color.dart';
 import 'package:on_mall/core/functions/translate_word.dart';
 import 'package:on_mall/core/language/lang_keys.dart';
 import 'package:on_mall/features/home/presentation/views/widgets/categories_list.dart';
@@ -62,6 +63,24 @@ class _HomeViewState extends State<HomeView> with WidgetsBindingObserver {
                 const RSizedBox(height: 10),
                 const AutoCarouselSlider(),
                 const RSizedBox(height: 10),
+                SizedBox(
+                  width: double.infinity,
+                  height: 300,
+                  child: Card(
+                    child: Row(
+                      children: [
+                        RotatedBox(
+                          quarterTurns: 2,
+                          child: CircularProgressIndicator(
+                            color: getColors(context).primaryColor,
+                            value: 2 / 4,
+                            year2023: true,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 const RSizedBox(height: 10),
                 const CategoriesList(),
                 // This is

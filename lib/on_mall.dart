@@ -36,7 +36,7 @@ class OnMall extends StatelessWidget {
                     localizationsDelegates:
                         AppLocalizationsSetup.localizationsDelegates,
                     theme: AppTheme.lighTheme(),
-                    initialRoute: AppRoutes.onboardingScreen,
+                    initialRoute: AppRoutes.navBarView,
                     onGenerateRoute: AppRoutes.onGenerateRout,
                     builder: (context, child) {
                       return GestureDetector(

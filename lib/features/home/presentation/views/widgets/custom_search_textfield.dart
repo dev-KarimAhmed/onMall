@@ -24,33 +24,12 @@ class CustomSearchTextField extends StatelessWidget {
           color: getColors(context).greyColor,
         ),
         prefixIcon: const Icon(Icons.search_rounded),
-        suffixIcon: Padding(
-          padding: !isEnglish(context)
-              ? const EdgeInsets.only(
-                  left: 2.0,
-                  bottom: 2,
-                  top: 2,
-                )
-              : const EdgeInsets.only(
-                  right: 2.0,
-                  bottom: 2,
-                  top: 2,
-                ),
-          child: ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: getColors(context).primaryColor,
-              foregroundColor: getColors(context).mainColor,
-            ),
-            onPressed: () {},
-            label: const Icon(Icons.filter_list_rounded),
-          ),
-        ),
         border: OutlineInputBorder(
           borderSide: BorderSide(
             color: getColors(context).primaryColor!,
           ),
           borderRadius: const BorderRadius.all(
-            Radius.circular(36),
+            Radius.circular(24),
           ),
         ),
         enabledBorder: OutlineInputBorder(
@@ -58,7 +37,7 @@ class CustomSearchTextField extends StatelessWidget {
             color: getColors(context).primaryColor!,
           ),
           borderRadius: const BorderRadius.all(
-            Radius.circular(36),
+            Radius.circular(24),
           ),
         ),
         focusedBorder: OutlineInputBorder(
@@ -66,7 +45,7 @@ class CustomSearchTextField extends StatelessWidget {
             color: getColors(context).primaryColor!,
           ),
           borderRadius: const BorderRadius.all(
-            Radius.circular(36),
+            Radius.circular(24),
           ),
         ),
       ),
